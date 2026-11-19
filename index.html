@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>易碳校园 - 毕业季闲置低碳流转平台</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft Yahei", system-ui, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #f0f9f4 0%, #e6f7ef 100%);
+      color: #2c3e50;
+      padding: 24px 16px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .banner {
+      background: linear-gradient(90deg, #279e68, #38b078);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 14px;
+      text-align: center;
+      margin-bottom: 22px;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(39, 158, 104, 0.22);
+    }
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      color: #1f8556;
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    header p {
+      color: #4a9472;
+      font-size: 16px;
+    }
+    .intro-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 20px 24px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .intro-card h3 {
+      color: #279e68;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    .intro-card p {
+      color: #555;
+      font-size: 15px;
+    }
+    .score-box {
+      background: #fff;
+      padding:14px 20px;
+      border-radius:16px;
+      margin-bottom:20px;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      box-shadow: 0 4px 12px #0000000c;
+      font-size:17px;
+    }
+    .score-box span:last-child {
+      color: #279e68;
+      font-weight: bold;
+      font-size:20px;
+    }
+    .input-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+      margin-bottom:20px;
+    }
+    .input-card h3 {
+      color:#279e68;
+      margin-bottom:12px;
+    }
+    textarea {
+      width: 100%;
+      border: 1px solid #cce9da;
+      border-radius: 12px;
+      padding:16px;
+      font-size:16px;
+      outline: none;
+      resize: vertical;
+      min-height:130px;
+      background: #fbfefd;
+    }
+    textarea:focus {
+      border-color:#279e68;
+      box-shadow: 0 0 0 3px rgba(39,158,104,0.12);
+    }
+    button {
+      width:100%;
+      margin-top:16px;
+      background:linear-gradient(90deg,#279e68,#38b078);
+      color:white;
+      border:none;
+      padding:15px;
+      border-radius:12px;
+      font-size:17px;
+      cursor:pointer;
+      transition:0.25s ease;
+      box-shadow: 0 3px 10px rgba(39,158,104,0.2);
+    }
+    button:hover {
+      background:linear-gradient(90deg,#1f8556,#2da06a);
+      transform: translateY(-2px);
+    }
+    button:disabled {
+      background:#94c9b0;
+      cursor:not-allowed;
+      transform:none;
+      box-shadow:none;
+    }
+    .loading {
+      text-align:center;
+      padding:18px;
+      color:#279e68;
+      display:none;
+    }
+    .error {
+      color:#e74c3c;
+      margin-top:12px;
+      text-align:center;
+    }
+    .result-card {
+      background:#fff;
+      border-radius:18px;
+      padding:24px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.07);
+      display:none;
+    }
+    .result-card h3 {
+      color:#279e68;
+      margin-bottom:16px;
+      font-size:20px;
+    }
+    .row {
+      margin:12px 0;
+      line-height:1.7;
+      font-size:15px;
+    }
+    .label {
+      font-weight:bold;
+      color:#333;
+      display:inline-block;
+      min-width:110px;
+    }
+    .tag-group {
+      margin-top:10px;
+    }
+    .tag {
+      display:inline-block;
+      background:#e6f7ef;
+      color:#279e68;
+      padding:5px 12px;
+      border-radius:24px;
+      font-size:14px;
+      margin:4px;
+    }
+    .carbon-tip {
+      margin-top:18px;
+      padding:14px 16px;
+      background:#f0f9f4;
+      border-left:5px solid #279e68;
+      border-radius:10px;
+      color:#357055;
+    }
+    footer {
+      margin-top:30px;
+      text-align:center;
+      color:#66947c;
+      font-size:14px;
+      padding-top:16px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="banner">
+    🎓毕业季临近｜别让闲置被随手丢弃，循环流转，低碳离校！
+  </div>
+
+  <header>
+    <h1>🌱 易碳校园</h1>
+    <p>闲置流转 · 碳有所减 · 让校园物品循环起来</p>
+  </header>
+
+  <div class="intro-card">
+    <h3>💡项目初衷</h3>
+    <p>每到毕业季，大量课本、数码、生活用品被随意丢弃，不仅造成资源浪费，垃圾清运、处理压力也很大。很多东西还完好可用，丢掉十分可惜。<br>
+    我们打造易碳校园，希望借助AI帮同学们快速给闲置估价、生成转手文案，鼓励大家优先流转闲置，减少丢弃，一起降低校园碳排放。</p>
+  </div>
+
+  <div class="score-box">
+    <span>🎯 我的碳积分</span>
+    <span id="carbonScore">0</span>
+  </div>
+
+  <div class="input-card">
+    <h3>📝 描述你的闲置物品</h3>
+    <textarea id="descInput" placeholder="例如：八成新大学英语课本，带笔记，无破损；或者续航正常的蓝牙耳机，外壳有轻微划痕"></textarea>
+    <button id="submitBtn">✨ AI估价 + 测算减碳量</button>
+    <div class="loading" id="loading">AI正在识别、估算价格与减碳量，请稍等...</div>
+    <div class="error" id="errBox"></div>
+  </div>
+
+  <div class="result-card" id="resultBox">
+    <h3>✅ AI识别&低碳评估结果</h3>
+    <div class="row"><span class="label">物品名称：</span><span id="itemName"></span></div>
+    <div class="row"><span class="label">成色判断：</span><span id="condition"></span></div>
+    <div class="row"><span class="label">校园建议售价：</span><span id="price"></span></div>
+    <div class="row"><span class="label">转手文案：</span><span id="copywriting"></span></div>
+    <div class="row">
+      <div class="label">分类标签：</div>
+      <div class="tag-group" id="tagBox"></div>
+    </div>
+    <div class="row"><span class="label">🌿预估节约碳：</span><span id="carbonSave"></span></div>
+    <div class="carbon-tip" id="carbonTip"></div>
+  </div>
+
+  <footer>
+    易碳校园｜致力于缓解毕业季闲置丢弃难题，践行绿色低碳校园
+  </footer>
+</div>
+
+<script>
+  // ========= 这里替换成你的HTTP网关测试链接！ =========
+  const apiUrl = "https://yiyan-ten.vercel.app/api/app";
+
+  const descInput = document.getElementById("descInput");
+  const submitBtn = document.getElementById("submitBtn");
+  const loading = document.getElementById("loading");
+  const errBox = document.getElementById("errBox");
+  const resultBox = document.getElementById("resultBox");
+  const carbonScoreEl = document.getElementById("carbonScore");
+
+  let score = Number(localStorage.getItem("carbonScore")) || 0;
+  carbonScoreEl.innerText = score;
+
+  submitBtn.onclick = async function () {
+    const desc = descInput.value.trim();
+    if (!desc) {
+      errBox.innerText = "请输入物品描述，再提交！";
+      return;
+    }
+    errBox.innerText = "";
+    resultBox.style.display = "none";
+    loading.style.display = "block";
+    submitBtn.disabled = true;
+
+    try {
+      const res = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          item_desc: desc
+        })
+      });
+      const data = await res.json();
+      loading.style.display = "none";
+      submitBtn.disabled = false;
+
+      if (data.status !== "success") {
+        errBox.innerText = "出错：" + data.msg;
+        return;
+      }
+      const d = data.data;
+      document.getElementById("itemName").innerText = d.item_name;
+      document.getElementById("condition").innerText = d.condition;
+      document.getElementById("price").innerText = d.price;
+      document.getElementById("copywriting").innerText = d.copywriting;
+      document.getElementById("carbonSave").innerText = d.carbon_save;
+      document.getElementById("carbonTip").innerText = "💡低碳小知识：" + d.carbon_tip;
+
+      const tagBox = document.getElementById("tagBox");
+      tagBox.innerHTML = "";
+      d.tags.forEach(t => {
+        tagBox.innerHTML += `<span class="tag">${t}</span>`
+      })
+
+      resultBox.style.display = "block";
+      score += 10;
+      localStorage.setItem("carbonScore", score);
+      carbonScoreEl.innerText = score;
+    } catch (e) {
+      loading.style.display = "none";
+      submitBtn.disabled = false;
+      errBox.innerText = "网络请求失败：" + e.message;
+    }
+  }
+</script>
+</body>
+</html>
